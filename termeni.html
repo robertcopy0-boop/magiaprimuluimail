@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termeni și Condiții | Daria Robert-Constantin PFA</title>
+<meta name="description" content="Termeni și condiții pentru utilizarea site-ului și achiziția produselor digitale oferite de Daria Robert-Constantin PFA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#0D1B24;
+  --ink-soft:#22333F;
+  --paper:#FBFAF7;
+  --card:#FFFFFF;
+  --red:#E23A26;
+  --red-dark:#C22F1D;
+  --marker:#FFDC4A;
+  --muted:#5C6B74;
+  --line:#E4E0D6;
+  --ok:#1F9D6B;
+  --radius:14px;
+  --maxw:980px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--red);font-weight:800;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+.topbar{
+  background:#10281F;
+  color:#F6FFF9;
+  padding:18px 22px;
+  border-bottom:3px solid var(--marker);
+  box-shadow:0 8px 24px rgba(13,27,36,.14);
+}
+.topbar-inner{
+  max-width:1080px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.brand{
+  font-weight:900;
+  letter-spacing:-.02em;
+  font-size:18px;
+}
+.back-link{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--marker);
+  text-transform:uppercase;
+  letter-spacing:.09em;
+}
+
+.hero{
+  padding:76px 0 58px;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(950px 430px at 85% -20%, #FFF3E8 0%, transparent 60%),
+    var(--paper);
+  text-align:center;
+}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--red);
+  font-weight:700;
+  display:inline-block;
+  margin-bottom:16px;
+}
+h1,h2,h3{font-weight:900;line-height:1.1;letter-spacing:-.018em}
+h1{
+  font-size:clamp(34px,5vw,58px);
+  max-width:840px;
+  margin:0 auto 18px;
+}
+.lead{
+  max-width:760px;
+  margin:0 auto;
+  color:var(--ink-soft);
+  font-size:clamp(17px,2.2vw,21px);
+}
+.updated{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:26px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1.5px solid var(--line);
+  background:#fff;
+  color:var(--muted);
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+}
+
+.content{
+  padding:64px 0 76px;
+}
+.legal-card{
+  background:var(--card);
+  border:2px solid var(--ink);
+  border-radius:var(--radius);
+  box-shadow:10px 10px 0 var(--ink);
+  padding:42px;
+  margin-bottom:26px;
+}
+.legal-card h2{
+  font-size:clamp(24px,3vw,34px);
+  margin-bottom:18px;
+}
+.legal-card h3{
+  font-size:20px;
+  margin:26px 0 10px;
+}
+.legal-card p{
+  color:var(--ink-soft);
+  margin-bottom:14px;
+}
+.legal-card ul,
+.legal-card ol{
+  margin:14px 0 14px 22px;
+  color:var(--ink-soft);
+}
+.legal-card li{margin-bottom:10px}
+.legal-card strong{color:var(--ink);font-weight:900}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:22px;
+}
+.info-box{
+  background:#FFFDF2;
+  border:1.5px solid var(--line);
+  border-radius:12px;
+  padding:16px 18px;
+}
+.info-box span{
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.info-box b{
+  color:var(--ink);
+  font-size:16px;
+}
+
+.notice{
+  background:#FFF6F4;
+  border:1.5px dashed var(--red);
+  border-radius:12px;
+  padding:18px 20px;
+  margin:22px 0;
+}
+.notice p{margin:0;color:var(--ink-soft)}
+
+.highlight{
+  background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);
+  padding:0 2px;
+  font-weight:900;
+  color:var(--ink);
+}
+
+.toc{
+  background:#F3F0E8;
+  border:1.5px solid var(--line);
+  border-radius:var(--radius);
+  padding:26px;
+  margin-bottom:26px;
+}
+.toc h2{font-size:24px;margin-bottom:14px}
+.toc ul{
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px 18px;
+}
+.toc li{margin:0}
+.toc a{
+  color:var(--ink);
+  font-weight:800;
+}
+.toc a:hover{color:var(--red)}
+
+footer{
+  background:var(--ink);
+  color:#8FA0AA;
+  padding:34px 0;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:.04em;
+}
+footer a{color:#C6D0D6}
+
+@media(max-width:760px){
+  body{font-size:16px}
+  .topbar-inner{flex-direction:column;text-align:center}
+  .hero{padding:58px 0 44px}
+  .content{padding:44px 0 58px}
+  .legal-card{padding:28px 20px;box-shadow:6px 6px 0 var(--ink)}
+  .info-grid{grid-template-columns:1fr}
+  .toc ul{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Daria Robert-Constantin PFA</div>
+    <a class="back-link" href="index.html">Înapoi pe site</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Document legal</span>
+    <h1>Termeni și Condiții</h1>
+    <p class="lead">
+      Acest document stabilește regulile de utilizare ale site-ului și condițiile aplicabile achiziției produselor digitale, materialelor educaționale, ghidurilor și resurselor oferite de Daria Robert-Constantin PFA.
+    </p>
+    <div class="updated">Ultima actualizare: 06 iulie 2026</div>
+  </div>
+</header>
+
+<main class="content">
+  <div class="wrap">
+
+    <nav class="toc" aria-label="Cuprins termeni și condiții">
+      <h2>Cuprins</h2>
+      <ul>
+        <li><a href="#informatii">1. Informații preliminare</a></li>
+        <li><a href="#identificare">2. Cine suntem</a></li>
+        <li><a href="#definitii">3. Definiții</a></li>
+        <li><a href="#utilizare">4. Condiții de utilizare</a></li>
+        <li><a href="#produse">5. Produse digitale</a></li>
+        <li><a href="#comenzi">6. Comenzi și plată</a></li>
+        <li><a href="#livrare">7. Livrare și acces</a></li>
+        <li><a href="#retragere">8. Retragere și garanție</a></li>
+        <li><a href="#raspundere">9. Răspundere și rezultate</a></li>
+        <li><a href="#proprietate">10. Proprietate intelectuală</a></li>
+        <li><a href="#date">11. Date personale</a></li>
+        <li><a href="#litigii">12. Reclamații și litigii</a></li>
+      </ul>
+    </nav>
+
+    <section class="legal-card" id="informatii">
+      <h2>1. Informații preliminare</h2>
+      <p>
+        Prezentul document, denumit în continuare <strong>„Termeni și Condiții”</strong>, reglementează accesarea și utilizarea site-ului pe care este publicată această pagină, precum și raporturile contractuale dintre <strong>Daria Robert-Constantin PFA</strong>, în calitate de vânzător/prestator, și orice vizitator, utilizator sau client.
+      </p>
+      <p>
+        Prin accesarea site-ului, citirea paginilor, completarea formularelor, plasarea unei comenzi sau achiziționarea unui produs digital, confirmați că ați citit, înțeles și acceptat acești Termeni și Condiții.
+      </p>
+      <p>
+        Dacă nu sunteți de acord cu prezentul document, vă rugăm să nu utilizați site-ul și să nu plasați comenzi prin intermediul acestuia.
+      </p>
+      <div class="notice">
+        <p><strong>Important:</strong> termenii pot fi actualizați periodic. Varianta aplicabilă este cea publicată pe site la momentul accesării sau la momentul plasării comenzii.</p>
+      </div>
+    </section>
+
+    <section class="legal-card" id="identificare">
+      <h2>2. Cine suntem</h2>
+      <p>
+        Site-ul și produsele digitale prezentate sunt administrate de <strong>Daria Robert-Constantin Persoană Fizică Autorizată</strong>, persoană fizică autorizată din România.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <span>Denumire</span>
+          <b>Daria Robert-Constantin Persoană Fizică Autorizată</b>
+        </div>
+        <div class="info-box">
+          <span>Formă juridică</span>
+          <b>Persoană Fizică Autorizată - PFA</b>
+        </div>
+        <div class="info-box">
+          <span>CUI</span>
+          <b>54453850</b>
+        </div>
+        <div class="info-box">
+          <span>Nr. Registrul Comerțului</span>
+          <b>F2026019130004</b>
+        </div>
+        <div class="info-box">
+          <span>Data înființării</span>
+          <b>08 aprilie 2026</b>
+        </div>
+        <div class="info-box">
+          <span>Cod CAEN</span>
+          <b>8559 - Alte forme de învățământ n.c.a.</b>
+        </div>
+        <div class="info-box">
+          <span>Adresă fiscală / corespondență</span>
+          <b>Municipiul Botoșani, Județul Botoșani, România</b>
+        </div>
+        <div class="info-box">
+          <span>TVA</span>
+          <b>Neînregistrată în scopuri de TVA în România</b>
+        </div>
+        <div class="info-box">
+          <span>Cod TVA intracomunitar</span>
+          <b>RO54603400</b>
+        </div>
+        <div class="info-box">
+          <span>Email contact</span>
+          <b><a href="mailto:robertcopy0@gmail.com">robertcopy0@gmail.com</a></b>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal-card" id="definitii">
+      <h2>3. Definiții</h2>
+      <p>Pentru o interpretare clară a prezentului document, termenii de mai jos au următorul sens:</p>
+      <ul>
+        <li><strong>Site</strong> - pagina web, subpaginile și orice conținut publicat de Daria Robert-Constantin PFA.</li>
+        <li><strong>Vânzător / Prestator</strong> - Daria Robert-Constantin PFA.</li>
+        <li><strong>Client / Cumpărător</strong> - persoana fizică sau juridică ce achiziționează un produs digital de pe site.</li>
+        <li><strong>Utilizator / Vizitator</strong> - orice persoană care accesează site-ul, indiferent dacă plasează sau nu o comandă.</li>
+        <li><strong>Produs digital</strong> - orice ghid, material educațional, template, fișier, resursă online, video, text, checklist, calendar, model de email sau alt conținut livrat electronic.</li>
+        <li><strong>Comandă</strong> - acțiunea prin care Clientul solicită achiziția unui produs digital și finalizează plata.</li>
+        <li><strong>Contract la distanță</strong> - contractul încheiat online între Client și Vânzător, fără prezența fizică simultană a părților.</li>
+      </ul>
+    </section>
+
+    <section class="legal-card" id="utilizare">
+      <h2>4. Condiții generale de utilizare a site-ului</h2>
+      <p>
+        Site-ul poate fi accesat de orice persoană interesată de produsele, serviciile sau materialele puse la dispoziție de Daria Robert-Constantin PFA.
+      </p>
+      <p>Este interzisă folosirea site-ului pentru:</p>
+      <ul>
+        <li>activități ilegale, frauduloase, abuzive sau contrare bunelor moravuri;</li>
+        <li>încercări de copiere, extragere, modificare sau afectare a conținutului site-ului;</li>
+        <li>încercări de acces neautorizat la conturi, date, sisteme sau resurse tehnice;</li>
+        <li>distribuirea de viruși, cod malițios, spam sau mesaje înșelătoare;</li>
+        <li>utilizarea conținutului site-ului într-un mod care prejudiciază Vânzătorul sau alți utilizatori.</li>
+      </ul>
+      <p>
+        Ne rezervăm dreptul de a restricționa accesul la site sau la anumite funcționalități dacă există suspiciuni rezonabile de utilizare abuzivă, fraudă sau încălcare a prezentului document.
+      </p>
+    </section>
+
+    <section class="legal-card" id="produse">
+      <h2>5. Produsele digitale oferite</h2>
+      <p>
+        Produsele comercializate prin site pot include, fără a se limita la: ghiduri practice, materiale educaționale, template-uri de email, planuri de implementare, fișe de lucru, checklist-uri, calendare de trimitere, instrucțiuni tehnice și alte resurse digitale.
+      </p>
+      <p>
+        Exemple de produse pot fi: <strong>„Magia primelor mailuri”</strong>, materiale gratuite de tip lead magnet, resurse educaționale despre email marketing, copywriting și strategie de marketing.
+      </p>
+      <p>
+        Produsele digitale sunt destinate informării, educației și aplicării practice. Ele nu reprezintă consultanță juridică, fiscală, financiară sau garanție de profit.
+      </p>
+      <div class="notice">
+        <p>Rezultatele obținute depind de modul în care Clientul aplică informațiile, de contextul afacerii, de ofertă, piață, audiență și alți factori externi care nu pot fi controlați de Vânzător.</p>
+      </div>
+    </section>
+
+    <section class="legal-card" id="comenzi">
+      <h2>6. Comenzi online, date de facturare, prețuri și plată</h2>
+      <p>
+        Comanda se realizează online, prin completarea datelor solicitate în pagina de comandă și prin achitarea prețului afișat pentru produsul ales.
+      </p>
+      <p>
+        Clientul este responsabil pentru corectitudinea datelor introduse în formularul de comandă. Datele furnizate sunt folosite pentru procesarea comenzii, emiterea documentelor fiscale, comunicarea cu Clientul și livrarea produsului digital.
+      </p>
+
+      <h3>6.1. Date de facturare colectate în pagina de comandă</h3>
+      <p>
+        În pagina de comandă, Clientul va selecta tipul de client: <strong>persoană fizică</strong> sau <strong>persoană juridică</strong>. În funcție de alegerea făcută, se vor solicita datele necesare facturării.
+      </p>
+      <p>
+        Pentru <strong>persoană fizică</strong>, pot fi colectate următoarele date: nume, prenume, adresă de email, telefon, țară/regiune, județ/provincie/stat, municipiu/localitate, stradă, număr, apartament/complex/unitate sau alte detalii de adresă, dacă sunt completate opțional, precum și note de comandă, dacă sunt transmise de Client.
+      </p>
+      <p>
+        Pentru <strong>persoană juridică</strong>, pot fi colectate următoarele date: CIF, denumire companie, nume, prenume, adresă de email, telefon, țară/regiune, județ/provincie/stat, municipiu/localitate, stradă, număr, apartament/complex/unitate sau alte detalii de adresă, dacă sunt completate opțional, precum și note de comandă, dacă sunt transmise de Client.
+      </p>
+      <p>
+        Pentru persoanele fizice nu se solicită CNP. Pentru persoanele juridice se solicită doar datele necesare identificării firmei și emiterii documentelor fiscale.
+      </p>
+
+      <h3>6.2. Prețuri și plată cu cardul</h3>
+      <p>
+        Contractul dintre Client și Vânzător se consideră încheiat la momentul confirmării plății și al transmiterii accesului la produsul digital, în funcție de fluxul tehnic al platformei de plată și livrare.
+      </p>
+      <p>
+        Prețurile sunt afișate în lei, pot include reduceri, promoții sau oferte limitate și pot fi modificate oricând, fără notificare prealabilă. Prețul aplicabil Clientului este cel afișat la momentul finalizării comenzii.
+      </p>
+      <p>
+        Plata se realizează online, cu cardul bancar, printr-un procesator de plată terț. Clientul introduce datele cardului în interfața securizată pusă la dispoziție de procesatorul de plată. Vânzătorul nu colectează și nu stochează numărul complet al cardului, codul CVV/CVC sau alte date complete de autentificare ale cardului bancar.
+      </p>
+      <p>
+        În cazul în care plata nu este confirmată, comanda nu este considerată finalizată, iar Vânzătorul nu are obligația de a livra produsul digital.
+      </p>
+    </section>
+
+    <section class="legal-card" id="livrare">
+      <h2>7. Livrarea produselor digitale și accesul</h2>
+      <p>
+        Produsele digitale sunt livrate electronic, de regulă prin email, pagină de confirmare, link de acces, descărcare directă sau altă metodă digitală indicată în pagina de vânzare ori în pagina de comandă.
+      </p>
+      <p>
+        Accesul poate fi acordat imediat după confirmarea plății sau într-un termen rezonabil, în funcție de procesatorul de plată, platforma de email, platforma de livrare și corectitudinea datelor introduse de Client.
+      </p>
+      <p>
+        Clientul este responsabil să introducă o adresă de email corectă și să verifice inclusiv folderele Spam, Promotions, Updates sau alte foldere similare.
+      </p>
+      <p>
+        Dacă accesul nu a fost primit după confirmarea plății, Clientul poate trimite un email la <a href="mailto:robertcopy0@gmail.com">robertcopy0@gmail.com</a>, indicând numele folosit la comandă, adresa de email și dovada plății.
+      </p>
+    </section>
+
+    <section class="legal-card" id="retragere">
+      <h2>8. Dreptul de retragere și garanția comercială</h2>
+      <h3>8.1. Dreptul legal de retragere</h3>
+      <p>
+        Pentru contractele la distanță, consumatorul beneficiază, în principiu, de un termen legal de 14 zile pentru retragere, conform legislației aplicabile consumatorilor.
+      </p>
+      <p>
+        În cazul conținutului digital care nu este livrat pe suport material, dreptul legal de retragere poate fi pierdut atunci când livrarea/accesul începe înainte de expirarea perioadei de 14 zile, cu acordul prealabil expres al Clientului și cu confirmarea că acesta a luat cunoștință de pierderea dreptului de retragere, conform legislației aplicabile.
+      </p>
+      <p>
+        Dacă în pagina de comandă este solicitat acordul expres pentru livrarea imediată a produsului digital, bifarea acelui acord poate avea efect asupra dreptului legal de retragere.
+      </p>
+
+      <h3>8.2. Garanția comercială oferită voluntar</h3>
+      <p>
+        Independent de drepturile legale ale consumatorului, Daria Robert-Constantin PFA poate oferi, pentru anumite produse, o garanție comercială voluntară, afișată în pagina de prezentare a produsului.
+      </p>
+      <p>
+        Pentru ghidul <strong>„Magia primelor mailuri”</strong>, dacă această garanție este menționată în pagina de vânzare, Clientul poate solicita returnarea banilor în termen de <span class="highlight">14 zile de la data achiziției</span>, dacă simte că materialul nu i se potrivește.
+      </p>
+      <p>
+        Cererea de rambursare se trimite la <a href="mailto:robertcopy0@gmail.com">robertcopy0@gmail.com</a>, împreună cu numele folosit la comandă, adresa de email și dovada plății. Rambursarea se realizează prin metoda posibilă tehnic, în funcție de procesatorul de plată.
+      </p>
+      <p>
+        Garanția comercială nu limitează drepturile legale ale consumatorului, acolo unde acestea se aplică.
+      </p>
+    </section>
+
+    <section class="legal-card" id="raspundere">
+      <h2>9. Limitarea răspunderii și rezultate</h2>
+      <p>
+        Materialele puse la dispoziție au scop educațional și practic. Vânzătorul nu garantează obținerea unui anumit nivel de vânzări, profit, conversii, clienți, rezultate financiare sau performanță în campanii.
+      </p>
+      <p>
+        Clientul înțelege că rezultatele depind de numeroși factori, inclusiv calitatea ofertei, piața, publicul țintă, lista de email, frecvența aplicării, mesajele folosite, strategia generală și bugetul disponibil.
+      </p>
+      <p>
+        Vânzătorul nu răspunde pentru pierderi indirecte, pierderi de profit, decizii de business sau consecințe rezultate din aplicarea greșită, incompletă sau neadaptată a informațiilor din materiale.
+      </p>
+    </section>
+
+    <section class="legal-card" id="proprietate">
+      <h2>10. Proprietate intelectuală</h2>
+      <p>
+        Toate materialele, textele, structurile, template-urile, conceptele, designul, elementele grafice, ghidurile, fișierele și resursele digitale oferite prin site sunt protejate de legislația privind drepturile de autor și aparțin Daria Robert-Constantin PFA, cu excepția cazurilor în care se menționează altfel.
+      </p>
+      <p>Clientul primește un drept de utilizare personală sau internă, neexclusiv și netransferabil. Este interzisă:</p>
+      <ul>
+        <li>revânzarea produselor digitale;</li>
+        <li>distribuirea către alte persoane fără acord scris;</li>
+        <li>copierea integrală sau parțială în scop comercial;</li>
+        <li>publicarea materialelor pe alte site-uri, grupuri, platforme sau comunități;</li>
+        <li>folosirea materialelor pentru crearea unor produse concurente sau similare.</li>
+      </ul>
+      <p>
+        Încălcarea acestor reguli poate atrage suspendarea accesului și, după caz, solicitarea de despăgubiri conform legii.
+      </p>
+    </section>
+
+    <section class="legal-card" id="date">
+      <h2>11. Date personale, comunicări și confidențialitate</h2>
+      <p>
+        Pentru procesarea comenzilor, livrarea produselor digitale, emiterea documentelor fiscale, comunicarea cu Clientul și îndeplinirea obligațiilor legale, pot fi prelucrate date personale și date de facturare, în funcție de tipul Clientului.
+      </p>
+      <p>
+        Pentru persoane fizice, pot fi prelucrate: nume, prenume, adresă de email, telefon, țară/regiune, județ/provincie/stat, municipiu/localitate, stradă, număr, detalii suplimentare de adresă completate opțional și note de comandă transmise opțional. Nu se solicită CNP pentru persoanele fizice.
+      </p>
+      <p>
+        Pentru persoane juridice, pot fi prelucrate: CIF, denumire companie, nume, prenume, adresă de email, telefon, țară/regiune, județ/provincie/stat, municipiu/localitate, stradă, număr, detalii suplimentare de adresă completate opțional și note de comandă transmise opțional.
+      </p>
+      <p>
+        Datele cardului bancar sunt procesate prin furnizori terți specializați în procesarea plăților. Vânzătorul nu stochează numărul complet al cardului, codul CVV/CVC sau datele complete necesare efectuării plății.
+      </p>
+
+      <h3>11.1. Prelucrarea datelor în scopuri de marketing și publicitate</h3>
+      <p>
+        Datele furnizate pentru comandă și facturare nu sunt stocate exclusiv pentru publicitate. Acestea sunt prelucrate în principal pentru procesarea comenzii, executarea contractului, emiterea și păstrarea documentelor fiscale, livrarea produsului digital, suportul acordat Clientului, securitate și îndeplinirea obligațiilor legale aplicabile.
+      </p>
+      <p>
+        În măsura permisă de lege, anumite date de contact, date privind comanda și date tehnice/de utilizare pot fi prelucrate și stocate strict pentru activități de marketing și publicitate, cum ar fi comunicări comerciale, promovarea produselor și serviciilor similare, măsurarea conversiilor, remarketing/retargeting și îmbunătățirea campaniilor publicitare.
+      </p>
+      <p>
+        Prelucrarea datelor în scopuri de marketing și publicitate se face doar dacă există un temei legal aplicabil, precum consimțământul Utilizatorului sau, după caz, interesul legitim al Vânzătorului, cu respectarea dreptului Utilizatorului de a se opune în orice moment.
+      </p>
+      <p>
+        Comunicările comerciale prin email se transmit numai cu consimțământul prealabil al Utilizatorului sau, în cazul clienților existenți, pentru produse ori servicii similare, dacă adresa de email a fost obținută cu ocazia unei vânzări, iar Clientului i se oferă în mod clar, simplu și gratuit posibilitatea de a se opune/dezabona atât la colectarea adresei, cât și în fiecare mesaj transmis.
+      </p>
+      <p>
+        Utilizatorul se poate opune oricând prelucrării datelor în scop de marketing direct sau se poate dezabona folosind linkul din email ori prin trimiterea unei solicitări la <a href="mailto:robertcopy0@gmail.com">robertcopy0@gmail.com</a>. Opoziția sau dezabonarea nu afectează prelucrarea datelor necesare pentru executarea contractului, facturare, obligații fiscale, securitate sau constatarea, exercitarea ori apărarea unui drept.
+      </p>
+      <p>
+        Pentru detalii complete privind prelucrarea datelor personale, vă rugăm să consultați <a href="confidentialitate.html">Politica de confidențialitate</a>, dacă aceasta este publicată pe site.
+      </p>
+    </section>
+
+    <section class="legal-card" id="litigii">
+      <h2>12. Reclamații, soluționarea disputelor și lege aplicabilă</h2>
+      <p>
+        Pentru orice problemă legată de comandă, acces, plată, rambursare sau utilizarea produselor digitale, Clientul este rugat să trimită mai întâi un email la <a href="mailto:robertcopy0@gmail.com">robertcopy0@gmail.com</a>. Vom încerca soluționarea amiabilă într-un termen rezonabil.
+      </p>
+      <p>
+        Dacă o soluție amiabilă nu este posibilă, consumatorii se pot adresa autorităților competente din România, inclusiv Autorității Naționale pentru Protecția Consumatorilor, prin canalele oficiale disponibile pe <a href="https://anpc.ro" target="_blank" rel="noopener noreferrer">anpc.ro</a>.
+      </p>
+      <p>
+        Prezentul document este guvernat de legea română. Orice litigiu care nu poate fi soluționat amiabil va fi înaintat instanțelor competente potrivit legislației în vigoare.
+      </p>
+      <div class="notice">
+        <p>Platforma europeană de soluționare online a litigiilor ODR/SOL a fost închisă în 2025. Pentru sesizări actuale, utilizați canalele naționale competente.</p>
+      </div>
+    </section>
+
+    <section class="legal-card" id="modificari">
+      <h2>13. Modificarea termenilor</h2>
+      <p>
+        Daria Robert-Constantin PFA își rezervă dreptul de a modifica, completa sau actualiza acești Termeni și Condiții ori de câte ori este necesar, inclusiv pentru adaptarea la modificări legislative, tehnice sau comerciale.
+      </p>
+      <p>
+        Versiunea actualizată va fi publicată pe această pagină și va produce efecte de la data publicării, cu excepția situațiilor în care se menționează expres o altă dată.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 · Daria Robert-Constantin PFA · CUI 54453850 · <a href="termeni.html">Termeni și condiții</a> · <a href="confidentialitate.html">Politica de confidențialitate</a>
+  </div>
+</footer>
+
+</body>
+</html>

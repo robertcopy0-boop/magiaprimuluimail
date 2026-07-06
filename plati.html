@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizează comanda – Magia Primelor Mailuri</title>
+<meta name="description" content="Finalizează comanda pentru ghidul Magia Primelor Mailuri. Acces imediat, plan practic de 7 zile, template-uri editabile și garanție 14 zile.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
+
+<style>
+:root{
+  --ink:#0D1B24;
+  --ink-soft:#22333F;
+  --paper:#FBFAF7;
+  --cream:#F3F0E8;
+  --card:#FFFFFF;
+  --red:#E23A26;
+  --red-dark:#C22F1D;
+  --gold:#C6B37A;
+  --marker:#FFDC4A;
+  --muted:#5C6B74;
+  --line:#E4E0D6;
+  --ok:#1F9D6B;
+  --ok-soft:#E9F6EF;
+  --danger-soft:#FFF6F4;
+  --radius:16px;
+  --maxw:1120px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+section{padding:72px 0}
+@media(max-width:720px){section{padding:52px 0}}
+
+h1,h2,h3{font-weight:900;line-height:1.08;letter-spacing:-.02em}
+h1{font-size:clamp(34px,5vw,60px)}
+h2{font-size:clamp(27px,4vw,42px);margin-bottom:16px}
+h3{font-size:21px}
+p{color:var(--ink-soft)}
+.lead{font-size:clamp(18px,2.2vw,22px);color:var(--ink-soft);max-width:760px}
+.center{text-align:center}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--red);
+  font-weight:700;
+  display:inline-block;
+  margin-bottom:14px;
+}
+.hl{background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);padding:0 2px}
+
+.topnote{
+  background:#10281F;
+  color:#F6FFF9;
+  padding:16px 22px;
+  border-bottom:3px solid var(--marker);
+  box-shadow:0 8px 24px rgba(13,27,36,.14);
+}
+.topnote-inner{max-width:1050px;margin:0 auto;text-align:center}
+.topnote-line{color:#F6FFF9;font-size:clamp(15px,2vw,19px);line-height:1.5;font-weight:800;font-style:italic}
+.topnote-line b{color:var(--marker);font-weight:900;font-style:normal}
+
+.hero{
+  padding:58px 0 42px;
+  background:radial-gradient(1000px 420px at 85% -10%, #FFF3E8 0%, transparent 60%),var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:center}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero .lead{margin-left:auto;margin-right:auto}}
+.congrats{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--ok-soft);
+  color:var(--ok);
+  border:1px solid #BEE5D2;
+  font-weight:800;
+  font-size:14px;
+  padding:8px 14px;
+  border-radius:99px;
+  margin-bottom:20px;
+}
+.hero .lead{margin-top:20px}
+.trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+@media(max-width:880px){.trust-row{justify-content:center}}
+.trust-pill{background:#fff;border:1.5px solid var(--line);border-radius:99px;padding:9px 13px;color:var(--ink-soft);font-weight:800;font-size:14px}
+.hero-card{
+  background:transparent;
+  border:none;
+  border-radius:0;
+  box-shadow:none;
+  padding:0;
+  transform:none;
+  overflow:visible;
+}
+
+.hero-photo{
+  width:100%;
+  max-width:5160px;
+  height:auto;
+  object-fit:contain;
+  object-position:center;
+  border-radius:0;
+  border:none;
+  background:transparent;
+  margin-left:auto;
+}
+@media(max-width:880px){
+  .hero-card{
+    max-width:430px;
+    margin:0 auto;
+    transform:none;
+  }
+}
+@media(max-width:520px){
+  .hero-card{
+    max-width:360px;
+    margin:0 auto;
+    padding:0;
+    box-shadow:none;
+    border:none;
+    background:transparent;
+    transform:none;
+  }
+
+  .hero-photo{
+    width:100%;
+    height:auto;
+    aspect-ratio:auto;
+    border:none;
+    box-shadow:none;
+    background:transparent;
+  }
+}
+
+.checkout-section{padding:52px 0 64px;background:#fff;border-bottom:1px solid var(--line)}
+.checkout-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,390px);gap:28px;align-items:start}
+.checkout-card,.summary-card,.benefits-card{background:var(--card);border:2px solid var(--ink);border-radius:20px;box-shadow:8px 8px 0 var(--ink)}
+.checkout-card{padding:28px;min-width:0}
+.summary-card{padding:0;overflow:hidden;margin-top:24px;box-shadow:6px 6px 0 var(--ink)}
+.benefits-card{padding:0;position:sticky;top:18px;overflow:hidden;min-width:0}
+@media(max-width:1040px){.checkout-grid{grid-template-columns:minmax(0,1fr) minmax(300px,350px);gap:22px}}
+@media(max-width:900px){.checkout-grid{grid-template-columns:1fr}.benefits-card{position:static;order:-1}}
+@media(max-width:640px){
+  .checkout-section{padding:34px 0 46px}
+  .checkout-card,.summary-card,.benefits-card{border-radius:16px;box-shadow:5px 5px 0 var(--ink)}
+  .checkout-card{padding:18px}
+}
+.card-head{padding:22px 24px;background:var(--ink);color:#fff}
+.card-head h3{color:#fff;font-size:23px}.card-head p{color:#C6D0D6;font-size:14.5px;margin-top:6px}
+.form-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.step{width:34px;height:34px;border-radius:50%;background:var(--marker);border:1.8px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:900;flex-shrink:0}
+.form-section{border-top:1.5px solid var(--line);padding-top:22px;margin-top:22px}
+.form-section:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.form-section-title{font-size:18px;font-weight:900;margin-bottom:14px;color:var(--ink)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:620px){.form-row{grid-template-columns:1fr}}
+.field{margin-bottom:15px}
+label{display:block;font-size:13px;font-weight:900;color:var(--ink);margin-bottom:7px}
+input,select,textarea{
+  width:100%;
+  border:1.8px solid #C8BFAF;
+  background:#fff;
+  border-radius:12px;
+  padding:14px 14px;
+  font-family:'Manrope',sans-serif;
+  font-size:16px;
+  color:var(--ink);
+  outline:none;
+}
+textarea{min-height:104px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(255,220,74,.35)}
+.helper{font-size:13px;color:var(--muted);margin-top:6px}
+.hidden{display:none!important}
+.required-note{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-top:-4px;margin-bottom:16px}
+
+.paybox{border:1.8px solid var(--line);border-radius:14px;padding:18px;background:#FBFAF7;margin:18px 0}
+.paybox-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.radio-dot{width:20px;height:20px;border-radius:50%;border:6px solid var(--red);flex-shrink:0;margin-top:2px}
+.paybox b{display:block;color:var(--ink);font-size:16px}.paybox span{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.card-element-wrap{background:#fff;border:1.8px solid #C8BFAF;border-radius:12px;padding:15px 14px}
+.card-error{color:var(--red);font-size:14px;font-weight:800;margin-top:10px;min-height:22px}
+.secure-note{font-size:13px;color:var(--muted);line-height:1.45}
+
+.terms{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;margin:18px 0 6px}
+.terms input{width:20px;height:20px;accent-color:var(--red);margin-top:3px}
+.terms label{margin:0;font-weight:700;line-height:1.45;color:var(--ink-soft)}
+.terms a{color:var(--red);font-weight:900;text-decoration:none}
+.btn{display:block;width:100%;text-align:center;background:var(--red);color:#fff;font-family:'Manrope',sans-serif;font-weight:900;font-size:18px;letter-spacing:.01em;padding:18px 24px;border-radius:12px;text-decoration:none;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;margin-top:18px;cursor:pointer}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);background:var(--red-dark)}
+.btn:disabled{opacity:.7;cursor:not-allowed;transform:none;box-shadow:5px 5px 0 var(--ink)}
+.micro{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-align:center;margin-top:14px;letter-spacing:.03em}
+.status-box{margin-top:16px;border-radius:12px;padding:13px 14px;font-weight:800;font-size:14px;display:none}
+.status-box.ok{display:block;background:var(--ok-soft);border:1.5px solid #BEE5D2;color:var(--ok)}
+.status-box.err{display:block;background:var(--danger-soft);border:1.5px solid #FFD0C8;color:var(--red)}
+
+.summary-body{padding:24px}
+.order-line{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.order-line span:first-child{color:var(--ink-soft)}
+.order-line strong{color:var(--ink);font-weight:900;text-align:right}
+.old-price{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+.total{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:18px 0 6px}
+.total span{font-weight:900;font-size:18px}.total strong{font-size:clamp(34px,4vw,44px);line-height:1;font-weight:900}
+.save-tag{display:inline-block;background:var(--marker);font-weight:900;font-size:13px;padding:5px 10px;border-radius:6px;border:1.5px solid var(--ink);margin-top:8px}
+.checkout-benefits{list-style:none;display:grid;gap:14px}
+.checkout-benefits li{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;background:#FBFAF7;border:1.5px solid var(--line);border-radius:14px;padding:14px}
+.checkout-benefits .ico{width:38px;height:38px;border-radius:12px;background:var(--ok-soft);display:flex;align-items:center;justify-content:center;font-size:19px;line-height:1;flex-shrink:0}
+.checkout-benefits b{display:block;color:var(--ink);font-size:15.5px;line-height:1.25;margin-bottom:4px}
+.checkout-benefits span:last-child{color:var(--muted);font-size:14px;line-height:1.45}
+.includes{list-style:none;margin-top:20px;display:grid;gap:12px}.includes li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-soft);font-size:15px}.includes .check{color:var(--ok);font-weight:900}
+.guarantee-mini{text-align: center;margin-top:20px;border-radius:14px;background:var(--ok-soft);border:1.5px solid #BEE5D2;padding:16px}.guarantee-mini b{color:var(--ok);display:block;margin-bottom:4px}.guarantee-mini p{font-size:14.5px}
+@media(max-width:640px){
+  .card-head{padding:18px 18px}
+  .summary-body{padding:18px}
+  .order-line{font-size:14.5px;gap:12px}
+  .total strong{font-size:36px}
+  .checkout-benefits li{grid-template-columns:34px 1fr;padding:13px}
+  .checkout-benefits .ico{width:34px;height:34px;font-size:17px}
+}
+
+.sec-tint{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+@media(max-width:900px){.results{grid-template-columns:1fr 1fr}}@media(max-width:640px){.results{grid-template-columns:1fr}}
+.result{background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:24px 22px;box-shadow:0 10px 24px rgba(13,27,36,.06)}
+.emo{font-size:27px;line-height:1;display:block;margin-bottom:12px}.result h3{font-size:18px;margin-bottom:8px}.result p{font-size:15px;color:var(--muted)}
+.author{display:grid;grid-template-columns:320px 1fr;gap:44px;align-items:center}@media(max-width:820px){.author{grid-template-columns:1fr;gap:28px}}
+.author-photo{background:#DDD6C7;border:2px solid var(--ink);border-radius:var(--radius);aspect-ratio:4/5;box-shadow:8px 8px 0 var(--ink);overflow:hidden}.author-photo img{width:100%;height:100%;object-fit:cover}.author p{margin-bottom:14px}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}@media(max-width:780px){.proof-grid{grid-template-columns:1fr}}
+.proof{background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:24px 22px}.proof b{display:block;font-size:18px;margin-bottom:7px}.proof p{font-size:15px;color:var(--muted)}
+.section-guarantee{background:#fff;padding:82px 24px}.garantie-premium{max-width:1050px;margin:0 auto;background:var(--gold);border-radius:22px;padding:42px 40px 46px;text-align:center;box-shadow:0 10px 35px rgba(0,0,0,.08)}.garantie-premium h2{font-size:clamp(32px,4vw,52px);color:#07152b;text-transform:uppercase;margin-bottom:14px}.garantie-sub{font-size:clamp(18px,2vw,28px);font-weight:900;color:#07152b;margin-bottom:22px}.garantie-premium p{max-width:760px;margin:0 auto 30px;font-size:clamp(15px,1.6vw,20px);line-height:1.7;color:#0f172a}.garantie-premium img{width:min(460px,78%);margin:0 auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.18))}@media(max-width:700px){.garantie-premium{padding:34px 22px}}
+.faq{max-width:820px;margin:32px auto 0;display:grid;gap:14px}.faq details{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:18px 20px}.faq summary{cursor:pointer;font-weight:900;color:var(--ink)}.faq p{margin-top:10px;font-size:15.5px;color:var(--muted)}
+.final{background:var(--paper);text-align:center}.final h2{max-width:780px;margin-left:auto;margin-right:auto}.final .lead{margin:0 auto 24px}
+footer{background:var(--ink);color:#8FA0AA;padding:34px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em}footer a{color:#C6D0D6;text-decoration:none}
+</style>
+</head>
+
+<body>
+
+<div class="topnote">
+  <div class="topnote-inner">
+    <p class="topnote-line"><b>🎉 Felicitări!</b> Ai făcut alegerea care-ți va SALVA buzunarul și-ți va DEBLOCA veniturile.</p>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>În curând vei învăța cum să-ți creezi o listă de email care să atragă clienți cu bani.</h1>
+        <p class="lead">De azi înainte, vei fi cu un pas înainte concurenței.</p>
+        <p class="lead">Vei atrage clienți plătitori care-ți vor crește cifra de afaceri.</p>
+	<p class="lead">Acest program cu <b>acces pe viață</b> te va învăța cum să creezi o campanie de mail-uri pe 7 zile, pentru a încălzi clientul să cumpere de la tine.</p>
+	<div class="trust-row">
+          <div class="trust-pill">⚡ Acces imediat după plată</div>
+          <div class="trust-pill">📬 Plan pe 7 zile</div>
+          <div class="trust-pill">🛡️ Garanția zero riscuri!</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img class="hero-photo" src="eu.png" alt="Robert Daria">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="checkout-section" id="comanda">
+  <div class="wrap">
+    <div class="checkout-grid">
+      <form class="checkout-card" id="checkoutForm">
+        <div class="form-title">
+          <div class="step">1</div>
+          <div>
+            <h3>Detalii pentru facturare</h3>
+            <p>Completează datele pentru factură și accesul la ghid.</p>
+          </div>
+        </div>
+
+        <p class="required-note">Câmpurile marcate cu * sunt obligatorii.</p>
+
+        <div class="form-section">
+          <div class="field">
+            <label for="tipClient">Tip client *</label>
+            <select id="tipClient" name="tipClient" required>
+              <option value="pf" selected>Persoană fizică</option>
+              <option value="pj">Persoană juridică / PFA</option>
+            </select>
+          </div>
+
+          <div id="companyFields" class="hidden">
+            <div class="form-row">
+              <div class="field">
+                <label for="cif">CIF *</label>
+                <input id="cif" name="cif" type="text" placeholder="CIF">
+              </div>
+              <div class="field">
+                <label for="denumireCompanie">Denumire companie *</label>
+                <input id="denumireCompanie" name="denumireCompanie" type="text" placeholder="Denumire companie">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="prenume">Prenume *</label>
+              <input id="prenume" name="prenume" type="text" placeholder="Prenume" required>
+            </div>
+            <div class="field">
+              <label for="nume">Nume *</label>
+              <input id="nume" name="nume" type="text" placeholder="Nume" required>
+            </div>
+          </div>
+
+ 		<div class="field">
+ 		 <label for="tara">Țară/regiune *</label>
+  		 <select id="tara" name="tara" required></select>
+		</div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="strada">Nume stradă *</label>
+              <input id="strada" name="strada" type="text" placeholder="Nume stradă" required>
+            </div>
+            <div class="field">
+              <label for="numar">Număr *</label>
+              <input id="numar" name="numar" type="text" placeholder="Număr" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="apartament">Apartament, complex, unitate etc. (opțional)</label>
+            <input id="apartament" name="apartament" type="text" placeholder="Apartament, complex, unitate etc. (opțional)">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="localitate">Localitate *</label>
+              <input id="localitate" name="localitate" type="text" placeholder="Localitate" required>
+            </div>
+            <div class="field">
+              <label for="judet">Județ *</label>
+              <input id="judet" name="judet" type="text" placeholder="Județ" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="telefon">Telefon *</label>
+              <input id="telefon" name="telefon" type="tel" placeholder="Telefon" required>
+            </div>
+            <div class="field">
+              <label for="email">Adresă email *</label>
+              <input id="email" name="email" type="email" placeholder="Adresă email" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="note">Informații suplimentare</label>
+            <textarea id="note" name="note" placeholder="Note comandă (opțional). Note referitoare la comanda ta, de exemplu: anumite note pentru livrare."></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-title" style="margin-bottom:12px">
+            <div class="step">2</div>
+            <div>
+              <h3>Plată online cu cardul</h3>
+              <p>Datele cardului sunt procesate securizat prin Stripe. Site-ul nu vede și nu salvează numărul cardului.</p>
+            </div>
+          </div>
+
+          <div class="paybox">
+            <div class="paybox-top">
+              <span class="radio-dot"></span>
+              <div>
+                <b>Card bancar</b>
+                <span>Introdu datele cardului și apasă butonul de finalizare.</span>
+              </div>
+            </div>
+
+            <label for="cardElement">Date card *</label>
+            <div class="card-element-wrap" id="cardElement"></div>
+            <div class="card-error" id="cardError" role="alert"></div>
+            <p class="secure-note">🔒 Plata este securizată și se face prin integarea Stripe în platformă.</p>
+          </div>
+        </div>
+
+        <div class="summary-card" aria-label="Rezumat comandă">
+          <div class="card-head">
+            <h3>Rezumatul comenzii</h3>
+            <p>Ultima verificare înainte de finalizarea plății.</p>
+          </div>
+          <div class="summary-body">
+            <div class="order-line"><span>Produs</span><strong>Magia Primelor Mailuri</strong></div>
+            <div class="total"><span>Total de plată</span><strong>453 lei</strong></div>
+            <div class="guarantee-mini">
+              <b>🛡️ Garanția Zero Riscuri</b>
+              <p>Ai 14 zile în care poți cere banii înapoi dacă simți că ghidul nu ți se potrivește.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">Sunt de acord cu <a href="https://robertcopy.netlify.app/termeni" target="_blank" rel="noopener">Termenii și condițiile</a> și cu <a href="https://robertcopy.netlify.app/politica" target="_blank" rel="noopener">Politica de confidențialitate</a>.</label>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">INVESTESC 453 LEI ȘI PRIMESC ACCES IMEDIAT</button>
+        <div class="status-box" id="paymentStatus"></div>
+        <p class="micro">🔒 Plată securizată 📜 Garanție 14 zile</p>
+      </form>
+
+      <aside class="benefits-card" aria-label="Ce primești efectiv">
+        <div class="card-head">
+          <h3>Ce primești efectiv</h3>
+          <p>Tot ce ai inclus în comandă, fără order bump și fără costuri ascunse.</p>
+        </div>
+        <div class="summary-body">
+          <ul class="checkout-benefits">
+            <li><span class="ico">📬</span><span><b>8 modele de email care atrag</b>Gata de personalizat pentru produsul sau serviciul tău.</span></li>
+            <li><span class="ico">📅</span><span><b>Plan clar pe 7 zile</b>Știi exact ce email trimiți, când și cu ce scop.</span></li>
+            <li><span class="ico">🎯</span><span><b>Tranziție spre vânzare</b>Încălzești audiența înainte să prezinți oferta.</span></li>
+            <li><span class="ico">⚙️</span><span><b>Setări tehnice simple</b>Pași clari ca să trimiți același email către mai mulți destinatari.</span></li>
+            <li><span class="ico">📊</span><span><b>Analiza indicatorilor</b>Înveți să citești indicatorii unei campanii de mail.</span></li>
+            <li><span class="ico">🔥</span><span><b>Acces pe viață</b>Revii la material ori de câte ori ai o ofertă nouă.</span></li>
+          </ul>
+          <div class="guarantee-mini">
+            <b>⚡ Acces imediat după plată</b>
+            <p>Materialul se trimite pe email imediat după confirmarea plății.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">Ești pe cale să....</span>
+      <h2>Vinzi inteligent și profitabil</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof"><b>✅ Material 100% ONLINE</b><p>Totul practic și aplicabil chiar de acum. Poți printa materialul.</p></div>
+      <div class="proof"><b>⚡ Acces rapid</b><p>După plată, primești accesul pe email și poți începe să parcurgi ghidul imediat.</p></div>
+      <div class="proof"><b>🛡️ 14 zile fără risc</b><p>Dacă materialul nu ți se potrivește, ai garanția de rambursare menționată pe pagină.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-tint">
+  <div class="wrap">
+    <div class="author">
+      <div class="author-photo"><img src="poza.png" alt="Robert Daria"></div>
+      <div>
+        <span class="eyebrow">Despre autor</span>
+        <h2>ROBERT DARIA</h2>
+        <p>Sunt <b>copywriter, absolvent al Școlii de Copy</b> și construiesc <b>strategii de marketing</b> care ajută afacerile să atragă clienți cu bani, fără bugete enorme de reclame.</p>
+        <p>După ce am parcurs 12 module practice în care am învățat cum să construiesc o strategie de marketing personalizată pentru fiecare antreprenor, mi-am dat seama de un lucru simplu:</p>
+        <p><b>Dacă faci același lucru ca și concurența, clienții vor avea toate motivele să fugă de tine și să dea banii altuia.</b></p>
+        <p>De aceea am creat ghidul <b>„Magia Primelor Mailuri”</b>, un prim pas practic prin care începi să folosești email marketingul pentru relație, încredere și vânzare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-guarantee">
+  <div class="garantie-premium">
+    <h2>GARANȚIA ZERO RISCURI</h2>
+    <div class="garantie-sub">Ai 14 zile în care poți solicita banii înapoi dacă simți că ghidul „Magia Primelor Mailuri” nu ți se potrivește.</div>
+    <p>Dacă nu rezonezi cu informația din ghid, îmi scrii în 14 zile de la achiziție la adresa <b>robertcopy0@gmail.com</b>, iar eu îți returnez integral suma achitată pe ghid.</p>
+    <img src="badge.png" alt="Garanție fără risc">
+  </div>
+</section>
+
+
+<section class="final">
+  <div class="wrap">
+    <span class="eyebrow">Ultimul pas</span>
+    <h2>Finalizează comanda și începe să construiești mailuri care vând!</h2>
+    <p class="lead">Fură startul și atrage clienții cu bani în baza ta de date!</p>
+    <a class="btn" href="#checkoutForm" style="max-width:520px;margin:24px auto 0">DA, VREAU GHIDUL LA 453 LEI</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 · Robert Daria · Toate drepturile rezervate · <a href="https://robertcopy.netlify.app/termeni">Termeni și condiții</a> · <a href="https://robertcopy.netlify.app/politica">Politica de confidențialitate</a></div>
+</footer>
+
+
+<script>
+/*
+  SETĂRI PLATĂ STRIPE
+  1. Înlocuiește STRIPE_PUBLISHABLE_KEY cu cheia ta publică, de forma pk_live_... sau pk_test_...
+  2. Urcă fișierul create-payment-intent.js în netlify/functions/create-payment-intent.js
+  3. În Netlify, setează Environment Variable: STRIPE_SECRET_KEY = sk_live_... sau sk_test_...
+*/
+const STRIPE_PUBLISHABLE_KEY = "pk_live_51TYtYfLKBfnXAKNg0JseAFrNHXDDmX1xyfxLRr4WQGc5V4v8iYyR083rW4BmOGsTFud2weJ1GY73tQcXjOmI1yLq00CFPuy3Xg";
+const CREATE_PAYMENT_INTENT_ENDPOINT = "/.netlify/functions/create-payment-intent";
+const MULTUMESC_URL = "/multumesc";
+const PRET_FINAL_LEI = 453;
+const COUNTRY_CODES = [
+  "AF","AX","AL","DZ","AS","AD","AO","AI","AQ","AG","AR","AM","AW","AU","AT","AZ",
+  "BS","BH","BD","BB","BY","BE","BZ","BJ","BM","BT","BO","BQ","BA","BW","BV","BR",
+  "IO","BN","BG","BF","BI","CV","KH","CM","CA","KY","CF","TD","CL","CN","CX","CC",
+  "CO","KM","CG","CD","CK","CR","CI","HR","CU","CW","CY","CZ","DK","DJ","DM","DO",
+  "EC","EG","SV","GQ","ER","EE","SZ","ET","FK","FO","FJ","FI","FR","GF","PF","TF",
+  "GA","GM","GE","DE","GH","GI","GR","GL","GD","GP","GU","GT","GG","GN","GW","GY",
+  "HT","HM","VA","HN","HK","HU","IS","IN","ID","IR","IQ","IE","IM","IL","IT","JM",
+  "JP","JE","JO","KZ","KE","KI","KP","KR","KW","KG","LA","LV","LB","LS","LR","LY",
+  "LI","LT","LU","MO","MG","MW","MY","MV","ML","MT","MH","MQ","MR","MU","YT","MX",
+  "FM","MD","MC","MN","ME","MS","MA","MZ","MM","NA","NR","NP","NL","NC","NZ","NI",
+  "NE","NG","NU","NF","MK","MP","NO","OM","PK","PW","PS","PA","PG","PY","PE","PH",
+  "PN","PL","PT","PR","QA","RE","RO","RU","RW","BL","SH","KN","LC","MF","PM","VC",
+  "WS","SM","ST","SA","SN","RS","SC","SL","SG","SX","SK","SI","SB","SO","ZA","GS",
+  "SS","ES","LK","SD","SR","SJ","SE","CH","SY","TW","TJ","TZ","TH","TL","TG","TK",
+  "TO","TT","TN","TR","TM","TC","TV","UG","UA","AE","GB","US","UM","UY","UZ","VU",
+  "VE","VN","VG","VI","WF","EH","YE","ZM","ZW"
+];
+
+function populateCountryDropdown(){
+  const taraSelect = document.getElementById("tara");
+  const regionNames = new Intl.DisplayNames(["ro"], { type: "region" });
+
+  const countries = COUNTRY_CODES
+    .map(function(code){
+      return {
+        code: code,
+        name: regionNames.of(code) || code
+      };
+    })
+    .sort(function(a, b){
+      return a.name.localeCompare(b.name, "ro");
+    });
+
+  taraSelect.innerHTML = "";
+
+  countries.forEach(function(country){
+    const option = document.createElement("option");
+    option.value = country.code;
+    option.textContent = country.name;
+
+    if(country.code === "RO"){
+      option.selected = true;
+    }
+
+    taraSelect.appendChild(option);
+  });
+}
+
+populateCountryDropdown();
+
+const tipClient = document.getElementById("tipClient");
+const companyFields = document.getElementById("companyFields");
+const cif = document.getElementById("cif");
+const denumireCompanie = document.getElementById("denumireCompanie");
+const form = document.getElementById("checkoutForm");
+const submitBtn = document.getElementById("submitBtn");
+const cardError = document.getElementById("cardError");
+const paymentStatus = document.getElementById("paymentStatus");
+
+function toggleClientType(){
+  const juridic = tipClient.value === "pj";
+  companyFields.classList.toggle("hidden", !juridic);
+  cif.required = juridic;
+  denumireCompanie.required = juridic;
+  if(!juridic){
+    cif.value = "";
+    denumireCompanie.value = "";
+  }
+}
+
+tipClient.addEventListener("change", toggleClientType);
+toggleClientType();
+
+function setStatus(type, message){
+  paymentStatus.className = "status-box " + type;
+  paymentStatus.textContent = message;
+}
+
+function getBillingData(){
+  return {
+    produs: "Magia Primelor Mailuri",
+    sumaLei: PRET_FINAL_LEI,
+    tipClient: tipClient.value === "pj" ? "Persoană juridică / PFA" : "Persoană fizică",
+    cif: cif.value.trim(),
+    denumireCompanie: denumireCompanie.value.trim(),
+    prenume: document.getElementById("prenume").value.trim(),
+    nume: document.getElementById("nume").value.trim(),
+    tara: document.getElementById("tara").value,
+    strada: document.getElementById("strada").value.trim(),
+    numar: document.getElementById("numar").value.trim(),
+    apartament: document.getElementById("apartament").value.trim(),
+    localitate: document.getElementById("localitate").value.trim(),
+    judet: document.getElementById("judet").value.trim(),
+    telefon: document.getElementById("telefon").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    note: document.getElementById("note").value.trim()
+  };
+}
+
+let stripe = null;
+let card = null;
+
+if(!STRIPE_PUBLISHABLE_KEY.includes("PUNE_AICI")){
+  stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+  const elements = stripe.elements({locale:"ro"});
+  card = elements.create("card", {
+    hidePostalCode:true,
+    style:{
+      base:{
+        color:"#0D1B24",
+        fontFamily:"Manrope, system-ui, sans-serif",
+        fontSize:"16px",
+        "::placeholder":{color:"#8FA0AA"}
+      },
+      invalid:{color:"#E23A26"}
+    }
+  });
+  card.mount("#cardElement");
+  card.on("change", function(event){
+    cardError.textContent = event.error ? event.error.message : "";
+  });
+}else{
+  document.getElementById("cardElement").innerHTML = "<b style='color:#E23A26'>Adaugă cheia publică Stripe în cod ca să apară câmpul real de card.</b>";
+}
+
+form.addEventListener("submit", async function(e){
+  e.preventDefault();
+  cardError.textContent = "";
+  paymentStatus.className = "status-box";
+  paymentStatus.textContent = "";
+
+  if(!form.reportValidity()) return;
+
+  if(!stripe || !card){
+    setStatus("err", "Plata nu este încă activă. Înlocuiește cheia publică Stripe din cod și setează funcția Netlify create-payment-intent.");
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "SE PROCESEAZĂ PLATA...";
+
+  const billing = getBillingData();
+
+  try{
+    const response = await fetch(CREATE_PAYMENT_INTENT_ENDPOINT, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(billing)
+    });
+
+    const data = await response.json();
+
+    if(!response.ok || data.error){
+      throw new Error(data.error || "Nu am putut iniția plata.");
+    }
+
+    const result = await stripe.confirmCardPayment(data.clientSecret, {
+      payment_method:{
+        card:card,
+        billing_details:{
+          name: billing.prenume + " " + billing.nume,
+          email: billing.email,
+          phone: billing.telefon,
+          address:{
+            country: billing.tara,
+            line1: billing.strada + " " + billing.numar,
+            line2: billing.apartament,
+            city: billing.localitate,
+            state: billing.judet
+          }
+        }
+      }
+    });
+
+    if(result.error){
+      throw new Error(result.error.message);
+    }
+
+    if(result.paymentIntent && result.paymentIntent.status === "succeeded"){
+      setStatus("ok", "Plata a fost realizată cu succes. Te redirecționez către pagina de mulțumire...");
+      window.location.href = MULTUMESC_URL + "?payment_intent=" + encodeURIComponent(result.paymentIntent.id);
+    }else{
+      setStatus("err", "Plata nu a fost finalizată. Te rog încearcă din nou.");
+    }
+  }catch(error){
+    setStatus("err", error.message || "A apărut o eroare la plată.");
+  }finally{
+    submitBtn.disabled = false;
+    submitBtn.textContent = "INVESTESC 453 LEI ȘI PRIMESC ACCES IMEDIAT";
+  }
+});
+</script>
+</body>
+</html>

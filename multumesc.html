@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mulțumesc – Magia Primelor Mailuri</title>
+<meta name="description" content="Comanda ta a fost confirmată. Următorul pas este o întâlnire 1 la 1 de analiză a strategiei de marketing a afacerii tale.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#0D1B24;
+  --ink-soft:#22333F;
+  --paper:#FBFAF7;
+  --cream:#F3F0E8;
+  --card:#FFFFFF;
+  --red:#E23A26;
+  --red-dark:#C22F1D;
+  --gold:#C6B37A;
+  --marker:#FFDC4A;
+  --muted:#5C6B74;
+  --line:#E4E0D6;
+  --ok:#1F9D6B;
+  --ok-soft:#E9F6EF;
+  --radius:18px;
+  --maxw:1120px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+section{padding:76px 0}
+
+h1,h2,h3{font-weight:900;line-height:1.08;letter-spacing:-.02em}
+h1{font-size:clamp(36px,5.5vw,68px)}
+h2{font-size:clamp(27px,4vw,44px);margin-bottom:16px}
+h3{font-size:21px}
+p{color:var(--ink-soft)}
+.lead{font-size:clamp(18px,2.2vw,23px);color:var(--ink-soft);max-width:760px}
+.center{text-align:center}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--red);
+  font-weight:800;
+  display:inline-block;
+  margin-bottom:14px;
+}
+.hl{
+  background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);
+  padding:0 2px;
+}
+
+.topnote{
+  background:#10281F;
+  color:#F6FFF9;
+  padding:16px 22px;
+  border-bottom:3px solid var(--marker);
+  box-shadow:0 8px 24px rgba(13,27,36,.14);
+}
+.topnote-inner{max-width:1050px;margin:0 auto;text-align:center}
+.topnote-line{
+  color:#F6FFF9;
+  font-size:clamp(15px,2vw,19px);
+  line-height:1.5;
+  font-weight:800;
+  font-style:italic;
+}
+.topnote-line b{color:var(--marker);font-weight:900;font-style:normal}
+
+.hero{
+  min-height:calc(100vh - 54px);
+  display:flex;
+  align-items:center;
+  padding:72px 0;
+  background:
+    radial-gradient(1000px 460px at 85% -10%, #FFF3E8 0%, transparent 60%),
+    radial-gradient(900px 420px at 0% 105%, #F0F8F3 0%, transparent 58%),
+    var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:46px;
+  align-items:center;
+}
+.confirm-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--ok-soft);
+  color:var(--ok);
+  border:1px solid #BEE5D2;
+  font-weight:900;
+  font-size:14px;
+  padding:9px 15px;
+  border-radius:99px;
+  margin-bottom:22px;
+}
+.hero .lead{margin-top:22px}
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:30px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:var(--red);
+  color:#fff;
+  font-family:'Manrope',sans-serif;
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:.01em;
+  padding:18px 26px;
+  border-radius:12px;
+  text-decoration:none;
+  border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);
+  transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
+  cursor:pointer;
+}
+.btn:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:7px 7px 0 var(--ink);
+  background:var(--red-dark);
+}
+.btn-secondary{
+  background:#fff;
+  color:var(--ink);
+}
+.btn-secondary:hover{
+  background:#FFF8E6;
+}
+.micro{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.03em;
+  margin-top:16px;
+}
+
+.next-card{
+  background:var(--card);
+  border:2px solid var(--ink);
+  border-radius:22px;
+  box-shadow:10px 10px 0 var(--ink);
+  overflow:hidden;
+}
+.card-head{
+  background:var(--ink);
+  color:#fff;
+  padding:24px 26px;
+}
+.card-head h3{color:#fff;font-size:24px}
+.card-head p{color:#C6D0D6;font-size:15px;margin-top:7px}
+.card-body{padding:26px}
+.plan-list{
+  list-style:none;
+  display:grid;
+  gap:14px;
+}
+.plan-list li{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:13px;
+  align-items:start;
+  background:#FBFAF7;
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  padding:15px;
+}
+.ico{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:var(--ok-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  line-height:1;
+}
+.plan-list b{
+  display:block;
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.25;
+  margin-bottom:4px;
+}
+.plan-list span:last-child{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.45;
+}
+.notice-box{
+  margin-top:18px;
+  background:#FFF8E6;
+  border:1.5px solid #E7D99A;
+  border-radius:14px;
+  padding:16px;
+}
+.notice-box b{display:block;color:var(--ink);margin-bottom:4px}
+.notice-box p{font-size:14.5px;color:var(--ink-soft)}
+
+.sec-white{
+  background:#fff;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:34px;
+}
+.step-card{
+  background:#fff;
+  border:1.5px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px 22px;
+  box-shadow:0 10px 24px rgba(13,27,36,.06);
+}
+.step-number{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:var(--marker);
+  border:1.8px solid var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-weight:900;
+  margin-bottom:15px;
+}
+.step-card h3{font-size:19px;margin-bottom:8px}
+.step-card p{font-size:15px;color:var(--muted)}
+
+.final-cta{
+  background:var(--cream);
+  text-align:center;
+}
+.final-box{
+  max-width:820px;
+  margin:0 auto;
+  background:#fff;
+  border:2px solid var(--ink);
+  border-radius:24px;
+  box-shadow:8px 8px 0 var(--ink);
+  padding:42px 34px;
+}
+.final-box .lead{margin:0 auto 24px}
+
+footer{
+  background:var(--ink);
+  color:#8FA0AA;
+  padding:34px 0;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:.04em;
+}
+footer a{color:#C6D0D6;text-decoration:none}
+
+@media(max-width:920px){
+  .hero{min-height:auto;padding:62px 0}
+  .hero-grid{grid-template-columns:1fr;gap:34px;text-align:center}
+  .hero .lead{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .next-card{max-width:620px;margin:0 auto;text-align:left}
+  .steps{grid-template-columns:1fr}
+  .step-card{max-width:620px;margin:0 auto;width:100%}
+}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  section{padding:52px 0}
+  .wrap{padding:0 16px}
+  .topnote{padding:14px 16px}
+  .hero{padding:44px 0 50px}
+  .hero-actions{display:grid;grid-template-columns:1fr;width:100%}
+  .btn{width:100%;padding:16px 18px;font-size:16px}
+  .next-card{border-radius:18px;box-shadow:6px 6px 0 var(--ink)}
+  .card-head{padding:20px}
+  .card-body{padding:18px}
+  .plan-list li{grid-template-columns:38px 1fr;padding:13px}
+  .ico{width:38px;height:38px;font-size:18px}
+  .final-box{border-radius:18px;box-shadow:6px 6px 0 var(--ink);padding:30px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topnote">
+  <div class="topnote-inner">
+    <p class="topnote-line"><b>🎉 Comanda ta a fost confirmată!</b> Verifică emailul pentru accesul la ghidul „Magia Primelor Mailuri”.</p>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="confirm-pill">✅ Plata a fost realizată cu succes</span>
+        <h1>Felicitări! Ai făcut primul pas spre emailuri care pot atrage clienți cu bani.</h1>
+        <p class="lead">Accesul la ghid va ajunge pe adresa de email completată la plată. Următorul pas este o <span class="hl">întâlnire 1 la 1 de analiză a strategiei de marketing a afacerii tale</span>.</p>
+        <p class="lead">Felicitări! Ai pus o piesă importantă în puzzle-ul unui sistem de marketing sănătos, construit să dezarmeze portofelele clienților, dar și pe ale concurenței.</p>
+        <p class="lead">În această întâlnire îți construiesc un plan personalizat de promovare, ca să ai o direcție clară pentru a atrage clienții potriviți, nu doar oameni curioși.</p>
+
+        <div class="hero-actions">
+          <a class="btn" href="https://calendly.com/robertcopy0/30min" target="_blank" rel="noopener">Programez o întâlnire</a>
+        </div>
+      </div>
+
+      <aside class="next-card" aria-label="Următorul pas">
+        <div class="card-head">
+          <h3>Următorul pas: analiza 1 la 1</h3>
+          <p>O întâlnire aplicată pe afacerea ta.</p>
+        </div>
+        <div class="card-body">
+          <ul class="plan-list">
+            <li>
+              <span class="ico">🔎</span>
+              <span><b>Analizăm strategia actuală</b>Vedem ce faci acum în promovare, ce atrage atenție și unde se pierde vânzarea.</span>
+            </li>
+            <li>
+              <span class="ico">🎯</span>
+              <span><b>Clarificăm clientul potrivit</b>Ne uităm la cine vrei să atragi și cum comunici ca să nu chemi doar curioși.</span>
+            </li>
+            <li>
+              <span class="ico">🧭</span>
+              <span><b>Construim direcția de promovare</b>Primești un plan personalizat, adaptat la produsul, serviciul și piața ta.</span>
+            </li>
+            <li>
+              <span class="ico">💸</span>
+              <span><b>Urmărim atragerea clienților cu bani</b>Scopul este să ai mesaje care filtrează, conving și duc omul mai aproape de cumpărare.</span>
+            </li>
+          </ul>
+
+          <div class="notice-box">
+            <b>📩 Important</b>
+            <p>Verifică și folderul Spam / Promotions dacă nu vezi emailul cu accesul în inbox.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="sec-white">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Cum decurge totul</span>
+        <h2>Ce se întâmplă după ce programezi întâlnirea</h2>
+        <p class="lead" style="margin:0 auto">Întâlnirea este gândită ca să pleci cu claritate, nu cu încă o listă de idei pe care nu știi cum să le aplici.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Alegi ziua și ora</h3>
+          <p>Apeși pe butonul de programare și alegi intervalul care ți se potrivește.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Analizăm afacerea ta</h3>
+          <p>Discutăm despre ofertă, public, promovare, mesaje și blocajele care pot opri vânzarea.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Primești o direcție clară pe 30/60/90 de zile</h3>
+          <p>Pleci cu o direcție simplă și aplicabilă pentru următoarele etape ale promovării.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <div class="final-box">
+        <span class="eyebrow">Nu lăsa pasul următor pe mai târziu</span>
+        <h2>Programează întâlnirea 1 la 1 și hai să vedem cum poate arăta strategia ta de promovare.</h2>
+        <p class="lead">Ghidul îți arată cum să pornești cu emailurile. Întâlnirea îți arată cum să legi promovarea de afacerea ta concretă.</p>
+        <a class="btn" href="https://calendly.com/robertcopy0/30min" target="_blank" rel="noopener" style="max-width:360px;margin:0 auto">Programez o întâlnire</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 · Robert Daria · Toate drepturile rezervate · <a href="https://robertcopy.netlify.app/termeni">Termeni și condiții</a> · <a href="https://robertcopy.netlify.app/politica">Politica de confidențialitate</a></div>
+</footer>
+
+</body>
+</html>
