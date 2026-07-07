@@ -20,6 +20,8 @@ exports.handler = async function(event) {
     const apiKey = process.env.MAILERLITE_API_KEY;
     const groupId = process.env.MAILERLITE_ABANDONED_GROUP_ID;
 
+    let subscriberId = null;
+
     const subscriberResponse = await fetch("https://connect.mailerlite.com/api/subscribers", {
       method: "POST",
       headers: {
@@ -40,13 +42,30 @@ exports.handler = async function(event) {
 
     const subscriberData = await subscriberResponse.json();
 
-    if (!subscriberResponse.ok) {
-      throw new Error(subscriberData.message || "Nu am putut crea subscriberul.");
+    if (subscriberResponse.ok && subscriberData.data && subscriberData.data.id) {
+      subscriberId = subscriberData.data.id;
+    } else {
+      const searchResponse = await fetch(
+        `https://connect.mailerlite.com/api/subscribers?filter[email]=${encodeURIComponent(email)}`,
+        {
+          headers: {
+            "Accept": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+          }
+        }
+      );
+
+      const searchData = await searchResponse.json();
+      const existingSubscriber = searchData.data && searchData.data[0];
+
+      if (!existingSubscriber) {
+        throw new Error(subscriberData.message || "Nu am putut crea sau găsi subscriberul.");
+      }
+
+      subscriberId = existingSubscriber.id;
     }
 
-    const subscriberId = subscriberData.data.id;
-
-    await fetch(`https://connect.mailerlite.com/api/subscribers/${subscriberId}/groups/${groupId}`, {
+    const groupResponse = await fetch(`https://connect.mailerlite.com/api/subscribers/${subscriberId}/groups/${groupId}`, {
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -54,10 +73,15 @@ exports.handler = async function(event) {
       }
     });
 
+    if (!groupResponse.ok) {
+      const groupData = await groupResponse.json();
+      throw new Error(groupData.message || "Nu am putut adăuga subscriberul în grup.");
+    }
+
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ ok: true })
+      body: JSON.stringify({ ok: true, subscriberId })
     };
 
   } catch (error) {
