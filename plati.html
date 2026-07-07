@@ -646,7 +646,8 @@ if(!STRIPE_PUBLISHABLE_KEY.includes("PUNE_AICI")){
   document.getElementById("cardElement").innerHTML = "<b style='color:#E23A26'>Adaugă cheia publică Stripe în cod ca să apară câmpul real de card.</b>";
 }
 
-let abandonedCheckoutSent = false;
+let emailCheckoutTimer = null;
+let lastSentEmail = "";
 
 function isValidEmail(email){
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -654,26 +655,32 @@ function isValidEmail(email){
 
 const emailInput = document.getElementById("email");
 
-emailInput.addEventListener("change", function(){
-  const email = emailInput.value.trim();
+emailInput.addEventListener("input", function(){
+  clearTimeout(emailCheckoutTimer);
 
-  if(!isValidEmail(email) || abandonedCheckoutSent) return;
+  emailCheckoutTimer = setTimeout(function(){
+    const finalEmail = emailInput.value.trim();
 
-  abandonedCheckoutSent = true;
+    if(!isValidEmail(finalEmail)) return;
+    if(finalEmail === lastSentEmail) return;
 
-  fetch(MAILERLITE_CHECKOUT_START_ENDPOINT, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      email: email,
-      prenume: document.getElementById("prenume").value || "",
-      nume: document.getElementById("nume").value || "",
-      telefon: document.getElementById("telefon").value || "",
-      sumaLei: PRET_FINAL_LEI
-    })
-  }).catch(function(error){
-    console.warn("MailerLite checkout start error:", error);
-  });
+    lastSentEmail = finalEmail;
+
+    fetch(MAILERLITE_CHECKOUT_START_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        email: finalEmail,
+        prenume: document.getElementById("prenume").value.trim(),
+        nume: document.getElementById("nume").value.trim(),
+        telefon: document.getElementById("telefon").value.trim(),
+        sumaLei: PRET_FINAL_LEI
+      })
+    }).catch(function(error){
+      console.warn("MailerLite checkout start error:", error);
+    });
+
+  }, 30000);
 });
 
 form.addEventListener("submit", async function(e){
